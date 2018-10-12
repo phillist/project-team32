@@ -47,7 +47,7 @@ public class Board {
 		// Check for ship overlap
 
 		// If the ship is within the given bounds then you should add it to the board (2D array)
-		ship.setList(x,y);
+		ship.setList(x,y, isVertical);
 		ships.add(ship);
 
 		return true;
