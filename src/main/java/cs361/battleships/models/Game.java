@@ -1,5 +1,6 @@
 package cs361.battleships.models;
 
+import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -50,17 +51,30 @@ public class Game {
     }
 
     private char randCol() {
-        // TODO implement
-        return 'X';
+        // Selects a random column
+        Random rand = new Random();
+        int add = rand.nextInt(9) + 0;
+
+        char y = 'A';
+        y = (char) (y + add);
+        return y;
     }
 
     private int randRow() {
-        // TODO implement
-        return 0;
+        // Selects a random number from 1 - 10
+        Random rand = new Random();
+        int x = rand.nextInt(10) + 1;
+        return x;
     }
 
     private boolean randVertical() {
-        // TODO implement
-        return false;
+        // Sets vertical randomly
+        Random rand = new Random();
+        int n = rand.nextInt(1) + 0;
+        if (n == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
