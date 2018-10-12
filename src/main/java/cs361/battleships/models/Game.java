@@ -58,6 +58,7 @@ public class Game {
     public int randRow() {
         int rand = ThreadLocalRandom.current().nextInt(1, 11);
         return rand;
+
     }
 
     public boolean randVertical() {
