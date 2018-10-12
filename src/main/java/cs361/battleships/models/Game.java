@@ -2,9 +2,9 @@ package cs361.battleships.models;
 
 import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static cs361.battleships.models.AtackStatus.*;
 
@@ -50,31 +50,24 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
-        // Selects a random column
-        Random rand = new Random();
-        int add = rand.nextInt(9) + 0;
-
-        char y = 'A';
-        y = (char) (y + add);
-        return y;
+    public char randCol() {
+        int rand = ThreadLocalRandom.current().nextInt(65, 75);
+        return (char)rand;
     }
 
-    private int randRow() {
-        // Selects a random number from 1 - 10
-        Random rand = new Random();
-        int x = rand.nextInt(10) + 1;
-        return x;
+    public int randRow() {
+        int rand = ThreadLocalRandom.current().nextInt(1, 11);
+        return rand;
+
     }
 
-    private boolean randVertical() {
-        // Sets vertical randomly
-        Random rand = new Random();
-        int n = rand.nextInt(1) + 0;
-        if (n == 1) {
-            return true;
-        } else {
+    public boolean randVertical() {
+        int rand = ThreadLocalRandom.current().nextInt(0, 2);
+        if (rand == 0) {
             return false;
+        }
+        else {
+            return true;
         }
     }
 }

@@ -4,31 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
+	private List<Ship> ships;
+	private List<Result> attacks;
 
 	private Square[][] board;
-	private ArrayList<Ship> ships;
+	//private ArrayList<Ship> ships;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Board() {
 		// TODO Implement
-		// Create a new 10x10 2D array as the game board
-		board = new Square[10][10];
 
-		// Puts squares in the 2D array
-		for (int i = 0; i < 10; i++) {
-			for (char j = 'A'; j < 10; j++) {
-				board[i][j] = new Square(i, j);
-			}
-		}
-
-		// Adds one of each ship to the board object
-		ships = new ArrayList<>();
-		ships.add(new Ship("MINESWEEPER"));
-		ships.add(new Ship("DESTROYER"));
-		ships.add(new Ship("BATTLESHIP"));
-
+		this.attacks = new ArrayList<Result>();
+		this.ships = new ArrayList<Ship>();
 	}
 
 	/*
@@ -58,14 +47,8 @@ public class Board {
 		// Check for ship overlap
 
 		// If the ship is within the given bounds then you should add it to the board (2D array)
-		for (int i=0; i<length; i++) {
-			if (isVertical) {
-				// Set the add the square to the ships occupied squares array list
-				ship.setSquare(x + i, y);
-			} else {
-				ship.setSquare(x, (char) (y + i));
-			}
-		}
+		ship.setList(x,y);
+		ships.add(ship);
 
 		return true;
 	}
@@ -80,7 +63,7 @@ public class Board {
 
 	public List<Ship> getShips() {
 		//TODO implement
-		return null;
+		return this.ships;
 	}
 
 	public void setShips(List<Ship> ships) {
