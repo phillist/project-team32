@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
+	private List<Ship> ships;
+	private List<Result> attacks;
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Board() {
 		// TODO Implement
+		this.attacks = new ArrayList<Result>();
+		this.ships = new ArrayList<ship>();
 	}
 
 	/*
