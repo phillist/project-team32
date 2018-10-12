@@ -13,7 +13,7 @@ public class Board {
 	public Board() {
 		// TODO Implement
 		this.attacks = new ArrayList<Result>();
-		this.ships = new ArrayList<ship>();
+		this.ships = new ArrayList<Ship>();
 	}
 
 	/*
