@@ -1,9 +1,10 @@
 package cs361.battleships.models;
 
+import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static cs361.battleships.models.AtackStatus.*;
 
@@ -49,18 +50,23 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
-        // TODO implement
-        return 'X';
+    public char randCol() {
+        int rand = ThreadLocalRandom.current().nextInt(65, 75);
+        return (char)rand;
     }
 
-    private int randRow() {
-        // TODO implement
-        return 0;
+    public int randRow() {
+        int rand = ThreadLocalRandom.current().nextInt(1, 11);
+        return rand;
     }
 
-    private boolean randVertical() {
-        // TODO implement
-        return false;
+    public boolean randVertical() {
+        int rand = ThreadLocalRandom.current().nextInt(0, 2);
+        if (rand == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
