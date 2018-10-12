@@ -13,15 +13,20 @@ public class Board {
 	public Board() {
 		// TODO Implement
 		this.attacks = new ArrayList<Result>();
-		this.ships = new ArrayList<ship>();
+		this.ships = new ArrayList<Ship>();
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
+//	    if(isVertical==true){
+//
+//        }
+        ship.setList(x,y);
+        ships.add(ship);
 		// TODO Implement
-		return false;
+        return true;
 	}
 
 	/*
@@ -34,7 +39,7 @@ public class Board {
 
 	public List<Ship> getShips() {
 		//TODO implement
-		return null;
+		return this.ships;
 	}
 
 	public void setShips(List<Ship> ships) {
