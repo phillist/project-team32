@@ -47,9 +47,15 @@ public class Ship {
 	}
 
 	// Allows the user to add a new square object to the occupiedSquares list of a ship
-	public void setList(int x, char y){
-		for(int i=0;i<this.length;i++) {
-			this.occupiedSquares.add(new Square(x + i, y));
+	public void setList(int x, char y, boolean isVertical){
+		if (isVertical) {
+			for (int i = 0; i < this.length; i++) {
+				this.occupiedSquares.add(new Square(x + i, y));
+			}
+		} else {
+			for (int i = 0; i < this.length; i++) {
+				this.occupiedSquares.add(new Square(x , (char) (y +i)));
+			}
 		}
 	}
 
