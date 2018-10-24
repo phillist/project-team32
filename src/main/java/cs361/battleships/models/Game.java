@@ -1,10 +1,10 @@
 package cs361.battleships.models;
 
-import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import static cs361.battleships.models.AtackStatus.*;
 
@@ -45,28 +45,21 @@ public class Game {
             // AI does random attacks, so it might attack the same spot twice
             // let it try until it gets it right
             opponentAttackResult = playersBoard.attack(randRow(), randCol());
-        } while(opponentAttackResult.getResult() != INVALID);
+        } while(opponentAttackResult.getResult() == INVALID);
 
         return true;
     }
 
-    public char randCol() {
-        int rand = ThreadLocalRandom.current().nextInt(65, 75);
-        return (char)rand;
+    private char randCol() {
+        int random = new Random().nextInt(10);
+        return (char) ('A' + random);
     }
 
-    public int randRow() {
-        int rand = ThreadLocalRandom.current().nextInt(1, 11);
-        return rand;
+    private int randRow() {
+        return  new Random().nextInt(10) + 1;
     }
 
-    public boolean randVertical() {
-        int rand = ThreadLocalRandom.current().nextInt(0, 2);
-        if (rand == 0) {
-            return false;
-        }
-        else {
-            return true;
-        }
+    private boolean randVertical() {
+        return new Random().nextBoolean();
     }
 }
