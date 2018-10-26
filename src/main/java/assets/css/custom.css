@@ -10,22 +10,7 @@ ul {
    margin-top:25px;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 15px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #0e28a5;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-    position:relative;
-    right:650px;
-}
+
 
 .button:hover {background-color: #190266}
 
@@ -114,10 +99,7 @@ td:hover {
     width: 200px;
 }
 
-.move{
-    position:relative;
-    right:650px;
-}
+
 
 .vertical{
   display: inline-block;
@@ -132,8 +114,6 @@ td:hover {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  position:relative;
-  right:650px;
 }
 body {
     background-image: url("https://i.ytimg.com/vi/C6yVfvhYLPE/maxresdefault.jpg");
@@ -159,7 +139,72 @@ height:800;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 
-position:relative;
-left:1550px;
-bottom:400px;
+position:fixed;
+right:100px;
+top:50px;
 }
+
+.vermov{
+position:fixed;
+left:100px;
+top:400px;
+}
+
+.minmov{
+ display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:100px;
+}
+.desmov{
+ display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:200px;
+}
+.batmov{
+ display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:300px;
+}
+place_destroyer
