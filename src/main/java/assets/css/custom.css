@@ -28,9 +28,7 @@ td:hover {
     background-color: black;
 }
 
-.hit {
-    background-color: orange;
-}
+
 
 .sink {
     background-color: red;
@@ -38,6 +36,47 @@ td:hover {
 
 .miss {
     background-color: blue;
+}
+
+@keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+.hit {
+    background-color: red;
+    animation: fade 600ms infinite;
+    -webkit-animation: fade 600ms infinite;
+}
+
+.firstbutton{
+    width: 100px
+}
+
+.secondbutton{
+    width: 150px
+}
+
+.thirdbutton{
+    width: 200px;
 }
 
 body {
