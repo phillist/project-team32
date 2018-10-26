@@ -1,5 +1,5 @@
-<#import "../layout/defaultLayout.ftl.html" as layout> 
-<@layout.myLayout "Home page">    
+<#import "../layout/defaultLayout.ftl.html" as layout>
+<@layout.myLayout "Home page">
 
 
 
@@ -14,14 +14,20 @@
 
 <ul>
 
+<<<<<<< HEAD
     <ul><button  class="minmov">Place Minesweeper</button></ul>
     <ul><button align="left"  class="desmov">Place Destroyer</button></ul>
     <ul><button align="left" class="batmov">Place Battleship</button></ul>
     <ul class="vermov"><input align="left" type="checkbox" id="is_vertical"  style="zoom:200%;color:blue"><p class="vertical">Vertical</p></input></ul>
+=======
+    <ul><button  id="place_minesweeper"  class="button">Place Minesweeper</button></ul>
+    <ul><button align="left" id="place_destroyer" class="button">Place Destroyer</button></ul>
+    <ul><button align="left" id="place_battleship"  class="button">Place Battleship</button></ul>
+    <ul class="move"><input align="left" type="checkbox" id="is_vertical" style="zoom:200%;"><p class="vertical">Vertical</p></input></ul>
+>>>>>>> refs/remotes/origin/master
     <ul ><button align="left" id="newgame" onClick="window.location.reload()" class="rightside">New Game</button></ul>
 
 </ul>
-
 
 
 <script type="text/javascript" src="/assets/game.js"></script>

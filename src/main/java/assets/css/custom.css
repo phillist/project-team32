@@ -10,7 +10,26 @@ ul {
    margin-top:25px;
 }
 
+<<<<<<< HEAD
 
+=======
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:relative;
+    right:40%;
+}
+>>>>>>> refs/remotes/origin/master
 
 .button:hover {background-color: #190266}
 
@@ -47,7 +66,6 @@ td:hover {
 .occupied {
     background-color: black;
 }
-
 
 
 .sink {
@@ -139,6 +157,7 @@ height:800;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 
+<<<<<<< HEAD
 position:fixed;
 right:100px;
 top:50px;
@@ -208,3 +227,9 @@ left:100px;
 top:300px;
 }
 place_destroyer
+=======
+position:relative;
+left:1550px;
+bottom:400px;
+}
+>>>>>>> refs/remotes/origin/master
