@@ -2,7 +2,7 @@
 -------------------------------------------------- */
 
 .battleGrid {
-    border: 1px solid black;
+    border: 5px solid black;
     border-spacing: 0px;
 }
 
@@ -38,4 +38,9 @@ td:hover {
 
 .miss {
     background-color: blue;
+}
+
+body {
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/DTcw7Px/swimming-pool-water-background-4k_v2ikhxlig__F0000.png");
+       background-size:cover;
 }

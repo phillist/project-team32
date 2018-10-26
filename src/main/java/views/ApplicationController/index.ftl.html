@@ -2,19 +2,21 @@
 <@layout.myLayout "Home page">    
 
 
-<h1>The Battleship game</h1>
+<h1 align="center">The Battleship game</h1>
 
-<table id="opponent" class="battleGrid">
+
+<table align="center" id="opponent" class="battleGrid" style="float: right; margin-right: 25%;">
 </table>
 
-<table id="player" class="battleGrid">
+<table align="center" id="player" class="battleGrid" style="float: left; margin-left: 25%;">
 </table>
 
-<ul>
+<li>
     <li><button id="place_minesweeper">Place Minesweeper</button></li>
     <li><button id="place_destroyer">Place Destroyer</button></li>
     <li><button id="place_battleship">Place Battleship</button></li>
     <li><input type="checkbox" id="is_vertical">Vertical</input></li>
+    <li><input type="button" value="Refresh Page" onClick="window.location.reload()"></li>
 </ul>
 
 <script type="text/javascript" src="/assets/game.js"></script>
