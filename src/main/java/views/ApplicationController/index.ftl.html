@@ -3,7 +3,7 @@
 
 
 
-<h1 align="center">Battleship</h1>
+<h1 align="center" >Battleship</h1>
 
 <table align="center" id="opponent" class="battleGrid" style="float: right; margin-right: 20%;">
 </table>
@@ -14,13 +14,14 @@
 
 <ul>
 
-    <ul><button  id="place_minesweeper"  class="button">Place Minesweeper</button></ul>
-    <ul><button align="left" id="place_destroyer" class="button">Place Destroyer</button></ul>
-    <ul><button align="left" id="place_battleship"  class="button">Place Battleship</button></ul>
-    <ul class="move"><input align="left" type="checkbox" id="is_vertical" style="zoom:200%;"><p class="vertical">Vertical</p></input></ul>
+    <ul><button id="place_minesweeper" class="minmov" class="button">Place Minesweeper</button></ul>
+    <ul><button align="left" id="place_destroyer" class="desmov">Place Destroyer</button></ul>
+    <ul><button align="left" id="place_battleship" class="batmov">Place Battleship</button></ul>
+    <ul class="vermov"><input align="left" type="checkbox" id="is_vertical"  style="zoom:200%;color:blue"><p class="vertical">Vertical</p></input></ul>
     <ul ><button align="left" id="newgame" onClick="window.location.reload()" class="rightside">New Game</button></ul>
 
 </ul>
+
 
 
 <script type="text/javascript" src="/assets/game.js"></script>
