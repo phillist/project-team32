@@ -24,7 +24,7 @@ ul {
   border-radius: 15px;
   box-shadow: 0 9px #999;
     position:relative;
-    right:650px;
+    right:40%;
 }
 
 .button:hover {background-color: #190266}
@@ -62,7 +62,6 @@ td:hover {
 .occupied {
     background-color: black;
 }
-
 
 
 .sink {
@@ -132,8 +131,6 @@ td:hover {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
-  position:relative;
-  right:650px;
 }
 body {
     background-image: url("https://i.ytimg.com/vi/C6yVfvhYLPE/maxresdefault.jpg");
