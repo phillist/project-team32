@@ -1,11 +1,40 @@
 /* Add additional stylesheets below
 -------------------------------------------------- */
 
+html{
+    height: 100%;
+}
+
 ul {
    display: block;
-   top: 50px;
-   margin-top: 25px;
+   margin-top:25px;
 }
+
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:relative;
+    right:650px;
+}
+
+.button:hover {background-color: #190266}
+
+.button:active {
+  background-color: #190266;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 
 .battleGrid {
     border: 5px solid black;
@@ -34,9 +63,7 @@ td:hover {
     background-color: black;
 }
 
-.hit {
-    background-color: orange;
-}
+
 
 .sink {
     background-color: red;
@@ -46,7 +73,93 @@ td:hover {
     background-color: blue;
 }
 
+@keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+}
+.hit {
+    background-color: red;
+    animation: fade 600ms infinite;
+    -webkit-animation: fade 600ms infinite;
+}
+
+.firstbutton{
+    width: 100px
+}
+
+.secondbutton{
+    width: 150px
+}
+
+.thirdbutton{
+    width: 200px;
+}
+
+.move{
+    position:relative;
+    right:650px;
+}
+
+.vertical{
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  position:relative;
+  right:650px;
+}
 body {
     background-image: url("https://i.ytimg.com/vi/C6yVfvhYLPE/maxresdefault.jpg");
        background-size:cover;
+       height:800;
+}
 
+.container{
+height:800;
+}
+
+.rightside{
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+
+position:relative;
+left:1550px;
+bottom:400px;
+}
