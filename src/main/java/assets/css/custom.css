@@ -1,6 +1,12 @@
 /* Add additional stylesheets below
 -------------------------------------------------- */
 
+ul {
+   display: block;
+   top: 50px;
+   margin-top: 25px;
+}
+
 .battleGrid {
     border: 5px solid black;
     border-spacing: 0px;
@@ -41,6 +47,6 @@ td:hover {
 }
 
 body {
-    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/DTcw7Px/swimming-pool-water-background-4k_v2ikhxlig__F0000.png");
+    background-image: url("https://i.ytimg.com/vi/C6yVfvhYLPE/maxresdefault.jpg");
        background-size:cover;
 }
