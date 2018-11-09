@@ -41,11 +41,51 @@ public class Ship {
 	}
 
 	public void place(char col, int row, boolean isVertical) {
-		for (int i=0; i<size; i++) {
-			if (isVertical) {
-				occupiedSquares.add(new Square(row+i, col));
+		for (int i = 0; i < size; i++) {
+			if (size == 2) {
+				if (isVertical) {
+					if (i == 0) {
+						occupiedSquares.add(new Square(row + i, col, true, false));
+					} else {
+						occupiedSquares.add(new Square(row + i, col));
+					}
+				} else {
+					if (i == 0) {
+						occupiedSquares.add(new Square(row, (char) (col + i), true, false));
+					} else {
+						occupiedSquares.add(new Square(row, (char) (col + i)));
+					}
+				}
+			} else if (size == 3) {
+				//DESTROYER
+				if (isVertical) {
+					if (i == 1) {
+						occupiedSquares.add(new Square(row + i, col, true, true));
+					} else {
+						occupiedSquares.add(new Square(row + i, col));
+					}
+				} else {
+					if (i == 1) {
+						occupiedSquares.add(new Square(row, (char) (col + i), true, true));
+					} else {
+						occupiedSquares.add(new Square(row, (char) (col + i)));
+					}
+				}
 			} else {
-				occupiedSquares.add(new Square(row, (char) (col + i)));
+				//BATTLESHIP
+				if (isVertical) {
+					if (i == 2) {
+						occupiedSquares.add(new Square(row + i, col, true, true));
+					} else {
+						occupiedSquares.add(new Square(row + i, col));
+					}
+				} else {
+					if (i == 2) {
+						occupiedSquares.add(new Square(row, (char) (col + i), true, true));
+					} else {
+						occupiedSquares.add(new Square(row, (char) (col + i)));
+					}
+				}
 			}
 		}
 	}
@@ -82,12 +122,23 @@ public class Ship {
 		result.setShip(this);
 		if (isSunk()) {
 			result.setResult(AtackStatus.SUNK);
-		} else {
+		} else if (attackedSquare.isCapQuarter()) {
+			for (int i = 0; i < result.getShip().getSize(); i++) {
+				var curSquare = result.getShip().getOccupiedSquares().get(i);
+				// Recursive call on attack, if the Square is not the captains quarters hit it.
+				if (!curSquare.isCapQuarter()) {
+				attack(curSquare.getRow(), curSquare.getColumn());
+				}
+			}
+			result.setResult(AtackStatus.SUNK);
+		} else{
 			result.setResult(AtackStatus.HIT);
 		}
 		return result;
 	}
-
+	public int getSize() {
+		return size;
+	}
 	@JsonIgnore
 	public boolean isSunk() {
 		return getOccupiedSquares().stream().allMatch(s -> s.isHit());
@@ -112,6 +163,6 @@ public class Ship {
 
 	@Override
 	public String toString() {
-		return kind + occupiedSquares.toString();
+		return kind + size + occupiedSquares.toString();
 	}
 }
