@@ -16,19 +16,32 @@ function makeGrid(table, isPlayer) {
     }
 }
 
+function showSolarPulseButton(){
+    document.getElementById("place_sonar").style.display = "inline-block";
+}
+
 function markHits(board, elementId, surrenderText) {
+   var shipIsSunk = "false";
     board.attacks.forEach((attack) => {
         let className;
-        if (attack.result === "MISS")
+        if (attack.result === "MISS"){
             className = "miss";
-        else if (attack.result === "HIT")
+        }
+        else if (attack.result === "HIT"){
             className = "hit";
-        else if (attack.result === "SUNK")
-            className = "hit"
-        else if (attack.result === "SURRENDER")
+        }
+        else if (attack.result === "SUNK"){
+            className = "hit";
+            shipIsSunk = "true";
+        }
+        else if (attack.result === "SURRENDER"){
             alert(surrenderText);
+         }
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
+    if(shipIsSunk === "true")
+        showSolarPulseButton()
+
 }
 
 function redrawGrid() {
