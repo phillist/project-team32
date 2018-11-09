@@ -102,6 +102,10 @@ td:hover {
     -webkit-animation: fade 600ms infinite;
 }
 
+.exposed{
+background-color:gray;
+}
+
 .firstbutton{
     width: 100px
 }

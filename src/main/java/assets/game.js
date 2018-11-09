@@ -3,6 +3,9 @@ var placedShips = 0;
 var game;
 var shipType;
 var vertical;
+var is_sonor = false;
+var sonor_count=2;
+
 
 function makeGrid(table, isPlayer) {
     for (i=0; i<10; i++) {
@@ -40,7 +43,7 @@ function markHits(board, elementId, surrenderText) {
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
     if(shipIsSunk === "true")
-        showSolarPulseButton()
+        showSolarPulseButton();
 
 }
 
@@ -89,12 +92,31 @@ function cellClick() {
             }
         });
     } else {
+    if(is_sonor==true){
+    if(sonor_count>0){
+    is_sonor=false;
+    sonor_count--;
+    sonor(game.playersBoard,row,col);
+
+
+    }else{
+    alert("Run out of sonor pulse!");
+    is_sonor=false;
+    }
+    }else{
         sendXhr("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
             redrawGrid();
-        })
+        });
+        }
     }
 }
+
+
+function sonor(board,row,col){
+ alert("sonor pulse");
+}
+
 
 function sendXhr(method, url, data, handler) {
     var req = new XMLHttpRequest();
@@ -152,7 +174,10 @@ function initGame() {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
     });
+    document.getElementById("place_sonar").addEventListener("click",function(e){
+        is_sonor = true;
+         });
     sendXhr("GET", "/game", {}, function(data) {
         game = data;
     });
-};
+}
