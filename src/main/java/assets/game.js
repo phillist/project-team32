@@ -122,7 +122,7 @@ function sendXhr(method, url, data, handler) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function(event) {
         if (req.status != 200) {
-            alert("Cannot complete the action");
+            alert("List of possible errors:\n\tA ship has not been placed\n\tShip is placed off of the board\n\tThe same square has been clicked");
             return;
         }
         handler(JSON.parse(req.responseText));
