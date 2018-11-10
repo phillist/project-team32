@@ -100,7 +100,7 @@ function cellClick() {
 
 
     }else{
-    alert("Run out of sonor pulse!");
+    alert("2 Total Charges: Ran out of sonar pulse charges!");
     is_sonor=false;
     }
     }else{
@@ -114,7 +114,7 @@ function cellClick() {
 
 
 function sonor(board,row,col){
- alert("sonor pulse");
+ alert("Sonar Pulse can be clicked and placed but is completely finished.");
 }
 
 
