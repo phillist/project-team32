@@ -72,6 +72,7 @@ public class Board {
 		return attackResult;
 	}
 
+
 	private Result attack(Square s) {
 		if (attacks.stream().anyMatch(r -> r.getLocation().equals(s))) {
 			var attackResult = new Result(s);

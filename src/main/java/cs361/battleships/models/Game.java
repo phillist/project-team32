@@ -50,6 +50,8 @@ public class Game {
         return true;
     }
 
+
+
     private char randCol() {
         int random = new Random().nextInt(10);
         return (char) ('A' + random);
@@ -62,4 +64,7 @@ public class Game {
     private boolean randVertical() {
         return new Random().nextBoolean();
     }
+
 }
+
+
