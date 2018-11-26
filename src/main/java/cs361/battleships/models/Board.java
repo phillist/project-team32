@@ -47,8 +47,31 @@ public class Board {
 	public Result attack(int x, char y) {
 		Result attackResult = attack(new Square(x, y));
 		attacks.add(attackResult);
+
+		if (attackResult.getShip() != null) {
+			//System.out.print(attackResult.getShip());
+			int shipSize = attackResult.getShip().getSize();
+			for (int j = 0; j < shipSize; j++) {
+				var capQuarterFinder = attackResult.getShip().getOccupiedSquares().get(j).isCapQuarter();
+				if (capQuarterFinder) {
+					var hitSquare = attackResult.getShip().getOccupiedSquares().get(j);
+					if (hitSquare.getRow() == x && hitSquare.getColumn() == y) {
+						for (int i = 0; i < shipSize; i++) {
+							var curSquare = attackResult.getShip().getOccupiedSquares().get(i);
+							if (!curSquare.isCapQuarter()) {
+								Result allHit = new Result(curSquare);
+								allHit.setResult(AtackStatus.HIT);
+								attacks.add(allHit);
+							}
+						}
+					}
+				}
+			}
+		}
+
 		return attackResult;
 	}
+
 
 	private Result attack(Square s) {
 		if (attacks.stream().anyMatch(r -> r.getLocation().equals(s))) {

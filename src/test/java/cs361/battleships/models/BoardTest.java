@@ -39,7 +39,7 @@ public class BoardTest {
         board.placeShip(minesweeper, 1, 'A', true);
         minesweeper = board.getShips().get(0);
         Result result = board.attack(1, 'A');
-        assertEquals(AtackStatus.HIT, result.getResult());
+        assertEquals(AtackStatus.SURRENDER, result.getResult());
         assertEquals(minesweeper, result.getShip());
     }
 
@@ -63,8 +63,8 @@ public class BoardTest {
     @Test
     public void testSurrender() {
         board.placeShip(new Ship("MINESWEEPER"), 1, 'A', true);
-        board.attack(1, 'A');
-        var result = board.attack(2, 'A');
+        board.attack(2, 'A');
+        var result = board.attack(1, 'A');
         assertEquals(AtackStatus.SURRENDER, result.getResult());
     }
 

@@ -1,24 +1,27 @@
-<#import "../layout/defaultLayout.ftl.html" as layout> 
-<@layout.myLayout "Home page">    
+<#import "../layout/defaultLayout.ftl.html" as layout>
+<@layout.myLayout "Home page">
 
 
-<h1 align="center">The Battleship game</h1>
 
-<table align="center" id="opponent" class="battleGrid" style="float: right; margin-right: 15%;">
+<h1 align="center" >Battleship</h1>
+
+<table align="center" id="opponent" class="battleGrid" style="float: right; margin-right: 20%;">
 </table>
 
-<table align="center" id="player" class="battleGrid" style="float: left; margin-left: 15%;">
+<table align="center" id="player" class="battleGrid" style="float: left; margin-left: 20%;">
 </table>
-
 
 
 <ul>
-    <ul><button  id="place_minesweeper" >Place Minesweeper</button></ul>
-    <ul><button align="left" id="place_destroyer" >Place Destroyer</button></ul>
-    <ul><button align="left" id="place_battleship" >Place Battleship</button></ul>
-    <ul><input align="left" type="checkbox" id="is_vertical" >Vertical</input></ul>
-    <ul><input align="left" type="button" value="Restart Game" onClick="window.location.reload()"></ul>
+    <ul><button id="place_minesweeper" class="minmov" class="button">Place Minesweeper</button></ul>
+    <ul><button align="left" id="place_destroyer" class="desmov">Place Destroyer</button></ul>
+    <ul><button align="left" id="place_battleship" class="batmov">Place Battleship</button></ul>
+    <ul><button id="place_sonar" class="sonmov" class="button">Place Sonar Pulse</button></ul>
+    <ul class="vermov"><input align="left" type="checkbox" id="is_vertical"  style="zoom:200%;color:blue"><p class="vertical">Vertical</p></ul>
+    <ul ><button align="left" id="newgame" onClick="window.location.reload()" class="rightside">New Game</button></ul>
+
 </ul>
+
 
 
 <script type="text/javascript" src="/assets/game.js"></script>

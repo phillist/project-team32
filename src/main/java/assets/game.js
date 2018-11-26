@@ -3,6 +3,9 @@ var placedShips = 0;
 var game;
 var shipType;
 var vertical;
+var is_sonor = false;
+var sonor_count=2;
+
 
 function makeGrid(table, isPlayer) {
     for (i=0; i<10; i++) {
@@ -16,19 +19,32 @@ function makeGrid(table, isPlayer) {
     }
 }
 
+function showSolarPulseButton(){
+    document.getElementById("place_sonar").style.display = "inline-block";
+}
+
 function markHits(board, elementId, surrenderText) {
+   var shipIsSunk = "false";
     board.attacks.forEach((attack) => {
         let className;
-        if (attack.result === "MISS")
+        if (attack.result === "MISS"){
             className = "miss";
-        else if (attack.result === "HIT")
+        }
+        else if (attack.result === "HIT"){
             className = "hit";
-        else if (attack.result === "SUNK")
-            className = "hit"
-        else if (attack.result === "SURRENDER")
+        }
+        else if (attack.result === "SUNK"){
+            className = "hit";
+            shipIsSunk = "true";
+        }
+        else if (attack.result === "SURRENDER"){
             alert(surrenderText);
+         }
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
+    if(shipIsSunk === "true")
+        showSolarPulseButton();
+
 }
 
 function redrawGrid() {
@@ -76,18 +92,37 @@ function cellClick() {
             }
         });
     } else {
+    if(is_sonor==true){
+    if(sonor_count>0){
+    is_sonor=false;
+    sonor_count--;
+    sonor(game.playersBoard,row,col);
+
+
+    }else{
+    alert("2 Total Charges: Ran out of sonar pulse charges!");
+    is_sonor=false;
+    }
+    }else{
         sendXhr("POST", "/attack", {game: game, x: row, y: col}, function(data) {
             game = data;
             redrawGrid();
-        })
+        });
+        }
     }
 }
+
+
+function sonor(board,row,col){
+ alert("Sonar Pulse can be clicked and placed but is completely finished.");
+}
+
 
 function sendXhr(method, url, data, handler) {
     var req = new XMLHttpRequest();
     req.addEventListener("load", function(event) {
         if (req.status != 200) {
-            alert("Cannot complete the action");
+            alert("List of possible errors:\n\tA ship has not been placed\n\tShip is placed off of the board\n\tThe same square has been clicked");
             return;
         }
         handler(JSON.parse(req.responseText));
@@ -139,7 +174,10 @@ function initGame() {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
     });
+    document.getElementById("place_sonar").addEventListener("click",function(e){
+        is_sonor = true;
+         });
     sendXhr("GET", "/game", {}, function(data) {
         game = data;
     });
-};
+}
