@@ -23,8 +23,13 @@ function showSolarPulseButton(){
     document.getElementById("place_sonar").style.display = "inline-block";
 }
 
+function showMoveFleetButton(){
+    document.getElementById("move_fleet").style.display = "inline-block";
+}
+
 function markHits(board, elementId, surrenderText) {
    var shipIsSunk = "false";
+   var moveFleet = 0;
     board.attacks.forEach((attack) => {
         let className;
         if (attack.result === "MISS"){
@@ -36,6 +41,7 @@ function markHits(board, elementId, surrenderText) {
         else if (attack.result === "SUNK"){
             className = "hit";
             shipIsSunk = "true";
+            moveFleet++;
         }
         else if (attack.result === "SURRENDER"){
             alert(surrenderText);
@@ -44,7 +50,8 @@ function markHits(board, elementId, surrenderText) {
     });
     if(shipIsSunk === "true")
         showSolarPulseButton();
-
+    if(moveFleet >= 2)
+        showMoveFleetButton();
 }
 
 function redrawGrid() {
@@ -86,7 +93,7 @@ function cellClick() {
             game = data;
             redrawGrid();
             placedShips++;
-            if (placedShips == 3) {
+            if (placedShips == 4) {
                 isSetup = false;
                 registerCellListener((e) => {});
             }
@@ -159,20 +166,41 @@ function place(size) {
     }
 }
 
+function hideMinesweeper(){
+    document.getElementById("place_minesweeper").style.display = "none";
+}
+function hideDestroyer(){
+    document.getElementById("place_destroyer").style.display = "none";
+}
+function hideBattleship(){
+    document.getElementById("place_battleship").style.display = "none";
+}
+function hideSubmarine(){
+    document.getElementById("place_submarine").style.display = "none";
+}
+
 function initGame() {
     makeGrid(document.getElementById("opponent"), false);
     makeGrid(document.getElementById("player"), true);
     document.getElementById("place_minesweeper").addEventListener("click", function(e) {
         shipType = "MINESWEEPER";
        registerCellListener(place(2));
+       hideMinesweeper();
     });
     document.getElementById("place_destroyer").addEventListener("click", function(e) {
         shipType = "DESTROYER";
        registerCellListener(place(3));
+       hideDestroyer();
     });
     document.getElementById("place_battleship").addEventListener("click", function(e) {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
+       hideBattleship();
+    });
+    document.getElementById("place_submarine").addEventListener("click", function(e) {
+         shipType = "SUBMARINE";
+        registerCellListener(place(5));
+        hideSubmarine();
     });
     document.getElementById("place_sonar").addEventListener("click",function(e){
         is_sonor = true;

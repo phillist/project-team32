@@ -33,6 +33,9 @@ public class Ship {
 			case "BATTLESHIP":
 				size = 4;
 				break;
+			case "SUBMARINE":
+				size = 5;
+				break;
 		}
 	}
 
@@ -71,7 +74,7 @@ public class Ship {
 						occupiedSquares.add(new Square(row, (char) (col + i)));
 					}
 				}
-			} else {
+			} else if (size == 4){
 				//BATTLESHIP
 				if (isVertical) {
 					if (i == 2) {
@@ -81,6 +84,21 @@ public class Ship {
 					}
 				} else {
 					if (i == 2) {
+						occupiedSquares.add(new Square(row, (char) (col + i), true, true));
+					} else {
+						occupiedSquares.add(new Square(row, (char) (col + i)));
+					}
+				}
+			} else if (size == 5){
+				//SUBMARINE
+				if (isVertical) {
+					if (i == 4) {
+						occupiedSquares.add(new Square(row + i, col, true, true));
+					} else {
+						occupiedSquares.add(new Square(row + i, col));
+					}
+				} else {
+					if (i == 4) {
 						occupiedSquares.add(new Square(row, (char) (col + i), true, true));
 					} else {
 						occupiedSquares.add(new Square(row, (char) (col + i)));
