@@ -27,9 +27,56 @@ function showMoveFleetButton(){
     document.getElementById("move_fleet").style.display = "inline-block";
 }
 
+function showCardinalDirection() {
+    document.getElementById("N").style.display = "inline-block";
+    document.getElementById("S").style.display = "inline-block";
+    document.getElementById("E").style.display = "inline-block";
+    document.getElementById("W").style.display = "inline-block";
+
+    // Add event listeners to each of the cardinal direction buttons
+    document.getElementById("N").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("S").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("E").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("W").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+
+}
+
+function hideMoveFleetButton(){
+    document.getElementById("move_fleet").style.display = "none";
+}
+
+function hideCardinalDirection() {
+    document.getElementById("N").style.display = "none";
+    document.getElementById("S").style.display = "none";
+    document.getElementById("E").style.display = "none";
+    document.getElementById("W").style.display = "none";
+}
+
 function markHits(board, elementId, surrenderText) {
    var shipIsSunk = "false";
    var moveFleet = 0;
+   var fuel = 2;
+   var numberOfSunk = 0;
     board.attacks.forEach((attack) => {
         let className;
         if (attack.result === "MISS"){
@@ -48,10 +95,23 @@ function markHits(board, elementId, surrenderText) {
          }
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
-    if(shipIsSunk === "true")
+
+    if(shipIsSunk === "true") {
         showSolarPulseButton();
-    if(moveFleet >= 2)
+    }
+    
+    if(moveFleet >= 2) {
         showMoveFleetButton();
+        document.getElementById("move_fleet").addEventListener("click", function() {
+            if (fuel > 0) {
+                showCardinalDirection();
+                fuel = fuel - 1;
+            } else {
+                hideMoveFleetButton();
+                alert("ALERT: Your ships do not have enough fuel to move.");
+            }
+        });
+    }
 }
 
 function redrawGrid() {
