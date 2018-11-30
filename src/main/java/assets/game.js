@@ -23,8 +23,60 @@ function showSolarPulseButton(){
     document.getElementById("place_sonar").style.display = "inline-block";
 }
 
+function showMoveFleetButton(){
+    document.getElementById("move_fleet").style.display = "inline-block";
+}
+
+function showCardinalDirection() {
+    document.getElementById("N").style.display = "inline-block";
+    document.getElementById("S").style.display = "inline-block";
+    document.getElementById("E").style.display = "inline-block";
+    document.getElementById("W").style.display = "inline-block";
+
+    // Add event listeners to each of the cardinal direction buttons
+    document.getElementById("N").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("S").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("E").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+    document.getElementById("W").addEventListener("click", function() {
+        // Move the ships
+
+        // Hide the cardinal directions
+        hideCardinalDirection();
+    });
+
+}
+
+function hideMoveFleetButton(){
+    document.getElementById("move_fleet").style.display = "none";
+}
+
+function hideCardinalDirection() {
+    document.getElementById("N").style.display = "none";
+    document.getElementById("S").style.display = "none";
+    document.getElementById("E").style.display = "none";
+    document.getElementById("W").style.display = "none";
+}
+
 function markHits(board, elementId, surrenderText) {
    var shipIsSunk = "false";
+   var moveFleet = 0;
+   var fuel = 2;
+   var numberOfSunk = 0;
     board.attacks.forEach((attack) => {
         let className;
         if (attack.result === "MISS"){
@@ -36,15 +88,30 @@ function markHits(board, elementId, surrenderText) {
         else if (attack.result === "SUNK"){
             className = "hit";
             shipIsSunk = "true";
+            moveFleet++;
         }
         else if (attack.result === "SURRENDER"){
             alert(surrenderText);
          }
         document.getElementById(elementId).rows[attack.location.row-1].cells[attack.location.column.charCodeAt(0) - 'A'.charCodeAt(0)].classList.add(className);
     });
-    if(shipIsSunk === "true")
-        showSolarPulseButton();
 
+    if(shipIsSunk === "true") {
+        showSolarPulseButton();
+    }
+
+    if(moveFleet >= 2) {
+        showMoveFleetButton();
+        document.getElementById("move_fleet").addEventListener("click", function() {
+            if (fuel > 0) {
+                showCardinalDirection();
+                fuel = fuel - 1;
+            } else {
+                hideMoveFleetButton();
+                alert("ALERT: Your ships do not have enough fuel to move.");
+            }
+        });
+    }
 }
 
 function redrawGrid() {
@@ -86,7 +153,7 @@ function cellClick() {
             game = data;
             redrawGrid();
             placedShips++;
-            if (placedShips == 3) {
+            if (placedShips == 4) {
                 isSetup = false;
                 registerCellListener((e) => {});
             }
@@ -159,25 +226,47 @@ function place(size) {
     }
 }
 
+function hideMinesweeper(){
+    document.getElementById("place_minesweeper").style.display = "none";
+}
+function hideDestroyer(){
+    document.getElementById("place_destroyer").style.display = "none";
+}
+function hideBattleship(){
+    document.getElementById("place_battleship").style.display = "none";
+}
+function hideSubmarine(){
+    document.getElementById("place_submarine").style.display = "none";
+}
+
 function initGame() {
     makeGrid(document.getElementById("opponent"), false);
     makeGrid(document.getElementById("player"), true);
     document.getElementById("place_minesweeper").addEventListener("click", function(e) {
         shipType = "MINESWEEPER";
        registerCellListener(place(2));
+       hideMinesweeper();
     });
     document.getElementById("place_destroyer").addEventListener("click", function(e) {
         shipType = "DESTROYER";
        registerCellListener(place(3));
+       hideDestroyer();
     });
     document.getElementById("place_battleship").addEventListener("click", function(e) {
         shipType = "BATTLESHIP";
        registerCellListener(place(4));
+       hideBattleship();
+    });
+    document.getElementById("place_submarine").addEventListener("click", function(e) {
+         shipType = "SUBMARINE";
+        registerCellListener(place(5));
+        hideSubmarine();
     });
     document.getElementById("place_sonar").addEventListener("click",function(e){
         is_sonor = true;
          });
-     document.getElementById("place_help").addEventListener("click",function(e){
+
+    document.getElementById("place_help").addEventListener("click",function(e){
            alert("Thank you for clicking Help/Info, let's explain how BattleShip works!\n");
            alert("RULES!\n1.) Each player places their ships onto the board by clicking on a ship\nand then clicking on a location on the board(click vertical to place vertically)\n2.) Each player then begins clicking on cells on the opponents board, once all ships have been placed\nthus, they begin taking turns attacking.\n3.) Ships may not be overlapped with other ships on players board, or placed off the board itself.\n4.) A hit is indicated in flashing red, miss is a solid blue and players can't attack same location twice.\nOnce a player, or AI sinks the all of their opponents ships, the game is over and they WON!");
            alert("SHIPS!\nMINESWEEPER: The Minesweeper is a ship that has a size of two spaces with captain's quarters located in the left cell\n\nDESTROYER: The Destroyer is a ship with a size of 3, with captain's quarters in cell second form the left.\n\nBATTLESHIP: The Battleship has a ship size of 4 and has the captain's quarters in the second from right cell.\n\nSUBMARINE: The Submarine is the only ship that can be above the water, or submerged below. While submerged below, it can only be hit by using the space laser,\nalso the submarine can be placed under other ships while submerged. The size of submarine is 5 cells 4 straight and 1 cell on top with captain's quarters located in farthest cell on the right.");

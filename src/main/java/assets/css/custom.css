@@ -165,25 +165,7 @@ position:fixed;
 left:100px;
 top:500px;
 }
-.sonmov{
-  display: none;
-  padding: 10px 15px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #0e28a5;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-    position:fixed;
-    left:100px;
-position:fixed;
-left:100px;
-top:400px;
-}
+
 .minmov{
  display: inline-block;
   padding: 10px 15px;
@@ -241,6 +223,146 @@ position:fixed;
 left:100px;
 top:300px;
 }
+
+.submov{
+ display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:400px;
+}
+
+.sonmov{
+  display: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:100px;
+}
+
+.fleetmov{
+  display: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #0e28a5;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+    position:fixed;
+    left:100px;
+position:fixed;
+left:100px;
+top:200px;
+}
+
+.north{
+   display: none;
+   padding: 10px 15px;
+   font-size: 24px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: #fff;
+   background-color: #0e28a5;
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 9px #999;
+     position:fixed;
+     left:100px;
+ position:fixed;
+ left:160px;
+ top:340px;
+ }
+
+ .south{
+   display: none;
+   padding: 10px 15px;
+   font-size: 24px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: #fff;
+   background-color: #0e28a5;
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 9px #999;
+     position:fixed;
+     left:100px;
+ position:fixed;
+ left:160px;
+ top:400px;
+ }
+
+ .east{
+   display: none;
+   padding: 10px 15px;
+   font-size: 24px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: #fff;
+   background-color: #0e28a5;
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 9px #999;
+     position:fixed;
+     left:100px;
+ position:fixed;
+ left:210px;
+ top:400px;
+ }
+
+ .west{
+   display: none;
+   padding: 10px 15px;
+   font-size: 24px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: #fff;
+   background-color: #0e28a5;
+   border: none;
+   border-radius: 15px;
+   box-shadow: 0 9px #999;
+     position:fixed;
+     left:100px;
+ position:fixed;
+ left:100px;
+ top:400px;
+ }
 
 .helmov{
  display: inline-block;

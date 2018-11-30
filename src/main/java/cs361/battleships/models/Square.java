@@ -51,6 +51,13 @@ public class Square {
 		return row;
 	}
 
+	public void setColumn(char newCol) {
+		column = newCol;
+	}
+
+	public void setRow(int newRow) {
+		row = newRow;
+	}
 
 	@Override
 	public boolean equals(Object other) {

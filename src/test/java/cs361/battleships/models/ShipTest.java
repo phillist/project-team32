@@ -71,13 +71,40 @@ public class ShipTest {
     @Test
     public void testPlaceBattleshipVertically() {
         Ship minesweeper = new Ship("BATTLESHIP");
-        minesweeper.place('A', 1, true);
+        minesweeper.place('B', 1, true);
         List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
         ArrayList<Object> expected = new ArrayList<>();
-        expected.add(new Square(1, 'A'));
+        expected.add(new Square(1, 'B'));
+        expected.add(new Square(2, 'B'));
+        expected.add(new Square(3, 'B'));
+        expected.add(new Square(4, 'B'));
+        assertEquals(expected, occupiedSquares);
+    }
+    @Test
+    public void testPlaceSubmarineHorizontaly() {
+        Ship minesweeper = new Ship("SUBMARINE");
+        minesweeper.place('A', 2, false);
+        List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
+        ArrayList<Object> expected = new ArrayList<>();
         expected.add(new Square(2, 'A'));
-        expected.add(new Square(3, 'A'));
-        expected.add(new Square(4, 'A'));
+        expected.add(new Square(2, 'B'));
+        expected.add(new Square(2, 'C'));
+        expected.add(new Square(2, 'D'));
+        expected.add(new Square(1, 'C'));
+        assertEquals(expected, occupiedSquares);
+    }
+
+    @Test
+    public void testPlaceSubmarineVertically() {
+        Ship minesweeper = new Ship("SUBMARINE");
+        minesweeper.place('B', 1, true);
+        List<Square> occupiedSquares = minesweeper.getOccupiedSquares();
+        ArrayList<Object> expected = new ArrayList<>();
+        expected.add(new Square(1, 'B'));
+        expected.add(new Square(2, 'B'));
+        expected.add(new Square(3, 'B'));
+        expected.add(new Square(4, 'B'));
+        expected.add(new Square(2, 'A'));
         assertEquals(expected, occupiedSquares);
     }
 
